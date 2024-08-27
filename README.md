@@ -125,15 +125,15 @@ The main goal is to plan a safe and comfortable trajectory that will guide the S
   - ![equation](https://latex.codecogs.com/png.latex?\alpha%20L_{pre}): Prediction loss, scaled by a learnable weight ![equation](https://latex.codecogs.com/png.latex?\alpha).
   - ![equation](https://latex.codecogs.com/png.latex?\beta%20L_{pla}): Planning loss, scaled by a learnable weight ![equation](https://latex.codecogs.com/png.latex?\beta).
 
-### Perception Loss (\( L_{per} \))
+### Perception Loss
 
 - **Components**: Segmentation loss, top-k cross-entropy loss, L2/L1 losses, and depth loss.
 
-### Prediction Loss (\( L_{pre} \))
+### Prediction Loss
 
 - **Components**: Semantic and instance segmentation, discounting future losses.
 
-### Planning Loss (\( L_{pla} \))
+### Planning Loss
 
 - **Equation (8)**:
 

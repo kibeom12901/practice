@@ -29,16 +29,16 @@ The framework introduces an accumulative ego-centric alignment method, which inc
 - **Enhancement of Static Object Perception**: A temporal fusion technique is applied to enhance the perception of static objects by using a self-attention mechanism that boosts the importance of features from previous time steps.
   
   Equation:
-  
-  ![equation](https://latex.codecogs.com/png.latex?\tilde{x}_t=b_t+%5Csum%20%5Climits_%7Bi=1%7D%5E%7Bt-1%7D%20%5Calpha_i%20%5Ctimes%20%5Ctilde{x}_{t-i})
 
-  Here, ![equation](https://latex.codecogs.com/png.latex?\tilde{x}_t) represents the accumulated feature, and ![equation](https://latex.codecogs.com/png.latex?b_t) is the BEV feature map.
+  <img width="204" alt="Screenshot 2024-08-27 at 4 49 18 PM" src="https://github.com/user-attachments/assets/5896ce55-32d9-4ee4-b74b-52fe7656f315">
+
+  Here, <img width="19" alt="Screenshot 2024-08-27 at 4 49 31 PM" src="https://github.com/user-attachments/assets/64706221-a4fa-44b3-8748-a64ffa6eefe8"> represents the accumulated feature, and <img width="16" alt="Screenshot 2024-08-27 at 4 49 50 PM" src="https://github.com/user-attachments/assets/f6905439-0b2e-469e-ad94-8b588cc1fae3"> is the BEV feature map.
 
 - **3D Convolutions**: These fused features are then processed with 3D convolutions to improve the perception of dynamic objects, using the equation:
 
-  ![equation](https://latex.codecogs.com/png.latex?\tilde{x}_{1%5Esim%20t}=C(%5Ctilde{x}_{1%5Esim%20t},m_{1%5Esim%20t}))
+  <img width="193" alt="Screenshot 2024-08-27 at 4 50 11 PM" src="https://github.com/user-attachments/assets/c6dbcaa0-e862-4805-b1f3-c4e0c200b0ed">
 
-  Where ![equation](https://latex.codecogs.com/png.latex?m_{1\sim%20t}) is the ego-motion matrix, and ![equation](https://latex.codecogs.com/png.latex?C) represents the 3D convolution network.
+  Where <img width="116" alt="Screenshot 2024-08-27 at 4 50 34 PM" src="https://github.com/user-attachments/assets/08feff12-fe3f-4ed5-b65e-cc5955eb0772"> is the ego-motion matrix, and <img width="41" alt="Screenshot 2024-08-27 at 4 51 05 PM" src="https://github.com/user-attachments/assets/628c7eb3-c7f2-41a7-921e-87a2c4fb3dad">represents the 3D convolution network.
 
 ## Prediction: Dual Pathway Probabilistic Future Modeling
 
@@ -54,7 +54,9 @@ The aim is to model the uncertainty in future predictions by considering the sto
 
 #### 1. Uncertainty Modeling
 
-- **Gaussian Distribution**: The future uncertainty is modeled as diagonal Gaussians with a mean (\( \mu \)) and variance (\( \sigma^2 \)):
+- **Gaussian Distribution**: The future uncertainty is modeled as diagonal Gaussians with a mean (<img width="37" alt="Screenshot 2024-08-27 at 4 52 25 PM" src="https://github.com/user-attachments/assets/e80a46af-c20a-41fe-8f1e-f9041f49f5f7">
+) and variance (<img width="57" alt="Screenshot 2024-08-27 at 4 52 38 PM" src="https://github.com/user-attachments/assets/7e422fd2-24b6-477e-809d-1091e631d849">
+):
 
   ![equation](https://latex.codecogs.com/png.latex?\eta_t%5Csim%20N(\mu_t,%20\sigma_t^2))
 

@@ -14,9 +14,7 @@ The framework introduces an accumulative ego-centric alignment method, which inc
 - **Transformation:** Multi-view images are transformed into a common 3D frame using depth predictions.
 - **Feature Extraction:** Features from each camera image are lifted into 3D space based on depth estimations, using the equation:
 
-  $$
-  u_i^k = f_i^k \otimes d_i^k
-  $$
+  ![equation](https://latex.codecogs.com/png.latex?u_i^k%20%3D%20f_i^k%20%5Cotimes%20d_i^k)
 
   Here, $u_i^k$ represents the 3D features, $f_i^k$ is the feature map, and $d_i^k$ is the depth map.
 
@@ -25,17 +23,13 @@ The framework introduces an accumulative ego-centric alignment method, which inc
 ### 2. Temporal Fusion
 - **Enhancement of Static Object Perception:** A temporal fusion technique is applied to enhance the perception of static objects by using a self-attention mechanism that boosts the importance of features from previous time steps.
 
-  $$
-  \tilde{x}_t = b_t + \sum_{i=1}^{t-1} \alpha_i \times \tilde{x}_{t-i}
-  $$
+  ![equation](https://latex.codecogs.com/png.latex?%5Ctilde%7Bx%7D_t%20%3D%20b_t%20%2B%20%5Csum_%7Bi%3D1%7D%5E%7Bt-1%7D%20%5Calpha_i%20%5Ctimes%20%5Ctilde%7Bx%7D_%7Bt-i%7D)
 
   Here, $\tilde{x}_t$ represents the accumulated feature, and $b_t$ is the BEV feature map.
 
 - **3D Convolutions:** These fused features are then processed with 3D convolutions to improve the perception of dynamic objects, using the equation:
 
-  $$
-  x_{1\sim t} = C(\tilde{x}_{1\sim t}, m_{1\sim t})
-  $$
+  ![equation](https://latex.codecogs.com/png.latex?x_%7B1%5Csim%20t%7D%20%3D%20C(%5Ctilde%7Bx%7D_%7B1%5Csim%20t%7D%2C%20m_%7B1%5Csim%20t%7D))
 
   Where $m_{1\sim t}$ is the ego-motion matrix, and $C$ represents the 3D convolution network.
 
@@ -50,7 +44,7 @@ In dynamic driving environments, predicting future trajectories is challenging d
 
 #### 1. Uncertainty Modeling
 - **Gaussian Distribution:** The future uncertainty is modeled as diagonal Gaussians with a mean ($\mu$) and variance ($\sigma^2$). Here, $\mu$ and $\sigma^2$ represent the latent channels in the model.
-- **Sampling During Training:** During training, the system samples from a Gaussian distribution $\eta_t \sim \mathcal{N}(\mu_t, \sigma_t^2)$, but during inference, it samples from $\eta_t \sim \mathcal{N}(\mu_t, 0)$.
+- **Sampling During Training:** During training, the system samples from a Gaussian distribution ![equation](https://latex.codecogs.com/png.latex?%5Ceta_t%20%5Csim%20%5Cmathcal%7BN%7D(%5Cmu_t%2C%20%5Csigma_t%5E2)), but during inference, it samples from ![equation](https://latex.codecogs.com/png.latex?%5Ceta_t%20%5Csim%20%5Cmathcal%7BN%7D(%5Cmu_t%2C%200)).
 
 #### 2. Dual Pathway Architecture
 - **Pathway A:** Integrates BEV features up to the current timestamp with the uncertainty distribution. This pathway uses historical features as input to a GRU (Gated Recurrent Unit), where the first feature $x_1$ is used as the initial hidden state.
@@ -58,9 +52,7 @@ In dynamic driving environments, predicting future trajectories is challenging d
 
 #### 3. Prediction Combination
 
-  $$
-  \hat{x}_{t+1} = G(x_t, \eta_t) \oplus G(x_{0:t})
-  $$
+  ![equation](https://latex.codecogs.com/png.latex?%5Chat%7Bx%7D_%7Bt%2B1%7D%20%3D%20G(x_t%2C%20%5Ceta_t)%20%5Coplus%20G(x_%7B0%3At%7D))
 
   Here, $G$ represents the GRU process, and $\oplus$ denotes the combination of these predictions.
 
@@ -85,9 +77,7 @@ The main goal is to plan a safe and comfortable trajectory that will guide the S
 #### Sampling
 The system generates a set of possible trajectories using a simplified vehicle model (the bicycle model) and evaluates each trajectory using a cost function.
 
-  $$
-  f(\tau, o, m; w) = f_o(\tau, o, m; w_o) + f_v(\tau; w_v) + f_r(\tau; w_r)
-  $$
+  ![equation](https://latex.codecogs.com/png.latex?f(%5Ctau%2C%20o%2C%20m%3B%20w)%20%3D%20f_o(%5Ctau%2C%20o%2C%20m%3B%20w_o)%20%2B%20f_v(%5Ctau%3B%20w_v)%20%2B%20f_r(%5Ctau%3B%20w_r))
 
   This equation describes the total cost function $f(\tau, o, m; w)$, which is a sum of three sub-costs:
   - **$f_o$:** Evaluates the trajectory based on occupancy predictions and map representations, considering safety and compliance with traffic rules.
@@ -104,9 +94,7 @@ The system generates a set of possible trajectories using a simplified vehicle m
 
 ### Selecting the Optimal Trajectory
 
-  $$
-  \tau^* = \underset{\tau_h}{\text{arg min}} \, f(\tau_h, o, m; w)
-  $$
+  ![equation](https://latex.codecogs.com/png.latex?%5Ctau%5E*%20%3D%20%5Cunderset%7B%5Ctau_h%7D%7B%5Ctext%7Barg%20min%7D%7D%20f(%5Ctau_h%2C%20o%2C%20m%3B%20w))
 
   This equation identifies the optimal trajectory $\tau^*$ from the set of possible trajectories $\tau_h$ by minimizing the cost function $f(\tau_h, o, m; w)$.
 
@@ -120,9 +108,7 @@ The system generates a set of possible trajectories using a simplified vehicle m
 
 ### Overall Loss Function (Equation 7)
 
-  $$
-  L = L_{per} + \alpha L_{pre} + \beta L_{pla}
-  $$
+  ![equation](https://latex.codecogs.com/png.latex?L%20%3D%20L_%7Bper%7D%20%2B%20%5Calpha%20L_%7Bpre%7D%20%2B%20%5Cbeta%20L_%7Bpla%7D)
 
   Components:
   - **$L_{per}$:** Perception loss.
@@ -149,10 +135,8 @@ The system generates a set of possible trajectories using a simplified vehicle m
 
 #### Equation (8)
 
-  $$
-  L_{pla} = \underset{\tau}{\text{max}} \left[ f(\tau_h, c) - f(\tau, c) + d(\tau_h, \tau) \right]_+ + d(\tau_h, \tau_o^*)
-  $$
+  ![equation](https://latex.codecogs.com/png.latex?L_%7Bpla%7D%20%3D%20%5Cunderset%7B%5Ctau%7D%7B%5Ctext%7Bmax%7D%7D%20%5Bf(%5Ctau_h%2C%20c)%20-%20f(%5Ctau%2C%20c)%20%2B%20d(%5Ctau_h%2C%20%5Ctau)%5D_%2B%20%2B%20d(%5Ctau_h%2C%20%5Ctau_o%5E*))
 
   **ReLU Function $[\cdot]_+$:** Ensures that the loss is non-negative.
 
-  **Distance $d
+  **Distance $d(\tau_h, \tau)$:** Measures how far the sampled trajectory $\tau$ is from the expert trajectory $\tau_h$. The goal is to minimize this distance for the selected trajectory.

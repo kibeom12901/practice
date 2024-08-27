@@ -20,7 +20,7 @@ The framework introduces an accumulative ego-centric alignment method, which inc
 
   ![equation](https://latex.codecogs.com/png.latex?u_{ik}=f_{ik}%20\otimes%20d_{ik})
 
-  Here, \( u_{ik} \) represents the 3D features, \( f_{ik} \) is the feature map, and \( d_{ik} \) is the depth map.
+  Here, ![equation](https://latex.codecogs.com/png.latex?u_{ik}) represents the 3D features, ![equation](https://latex.codecogs.com/png.latex?f_{ik}) is the feature map, and ![equation](https://latex.codecogs.com/png.latex?d_{ik}) is the depth map.
 
 - **Alignment**: These features are then aligned to the current view using the vehicle’s ego-motion and pooled into BEV features.
 
@@ -32,13 +32,13 @@ The framework introduces an accumulative ego-centric alignment method, which inc
   
   ![equation](https://latex.codecogs.com/png.latex?\tilde{x}_t=b_t+%5Csum%20%5Climits_%7Bi=1%7D%5E%7Bt-1%7D%20%5Calpha_i%20%5Ctimes%20%5Ctilde{x}_{t-i})
 
-  Here, \( \tilde{x}_t \) represents the accumulated feature, and \( b_t \) is the BEV feature map.
+  Here, ![equation](https://latex.codecogs.com/png.latex?\tilde{x}_t) represents the accumulated feature, and ![equation](https://latex.codecogs.com/png.latex?b_t) is the BEV feature map.
 
 - **3D Convolutions**: These fused features are then processed with 3D convolutions to improve the perception of dynamic objects, using the equation:
 
   ![equation](https://latex.codecogs.com/png.latex?\tilde{x}_{1%5Esim%20t}=C(%5Ctilde{x}_{1%5Esim%20t},m_{1%5Esim%20t}))
 
-  Where \( m_{1\sim t} \) is the ego-motion matrix, and \( C \) represents the 3D convolution network.
+  Where ![equation](https://latex.codecogs.com/png.latex?m_{1\sim%20t}) is the ego-motion matrix, and ![equation](https://latex.codecogs.com/png.latex?C) represents the 3D convolution network.
 
 ## Prediction: Dual Pathway Probabilistic Future Modeling
 
@@ -65,7 +65,7 @@ The aim is to model the uncertainty in future predictions by considering the sto
 #### 2. Dual Pathway Architecture
 
 - **Pathway a**: Integrates BEV features up to the current timestamp with the uncertainty distribution.
-- **Pathway b**: Uses the sampled Gaussian distribution \( \eta_t \) as input to a GRU, with the current feature \( x_t \) as the initial hidden state.
+- **Pathway b**: Uses the sampled Gaussian distribution ![equation](https://latex.codecogs.com/png.latex?\eta_t) as input to a GRU, with the current feature ![equation](https://latex.codecogs.com/png.latex?x_t) as the initial hidden state.
 
 #### 3. Prediction Combination
 
@@ -73,7 +73,7 @@ The aim is to model the uncertainty in future predictions by considering the sto
 
   ![equation](https://latex.codecogs.com/png.latex?\hat{x}_{t+1}=G(x_t,\eta_t)\oplus%20G(x_{0:t}))
 
-  Where \( G \) represents the GRU process, and \( \oplus \) denotes the combination of these predictions.
+  Where ![equation](https://latex.codecogs.com/png.latex?G) represents the GRU process, and ![equation](https://latex.codecogs.com/png.latex?\oplus) denotes the combination of these predictions.
 
 ### Future State Predictions
 
@@ -95,10 +95,10 @@ The main goal is to plan a safe and comfortable trajectory that will guide the S
 
   ![equation](https://latex.codecogs.com/png.latex?f(\tau,%20o,%20m;%20w)%20=%20f_o(\tau,%20o,%20m;%20w_o)%20+%20f_v(\tau;%20w_v)%20+%20f_r(\tau;%20w_r))
 
-  This equation describes the total cost function \( f(\tau,o,m;w) \), which is a sum of three sub-costs:
-  - \( f_o \): Safety and traffic compliance cost.
-  - \( f_v \): Prediction module cost based on learned features.
-  - \( f_r \): Performance cost including comfort and progress.
+  This equation describes the total cost function ![equation](https://latex.codecogs.com/png.latex?f(\tau,o,m;w)), which is a sum of three sub-costs:
+  - ![equation](https://latex.codecogs.com/png.latex?f_o): Safety and traffic compliance cost.
+  - ![equation](https://latex.codecogs.com/png.latex?f_v): Prediction module cost based on learned features.
+  - ![equation](https://latex.codecogs.com/png.latex?f_r): Performance cost including comfort and progress.
 
 ### Selecting the Optimal Trajectory
 
@@ -106,7 +106,7 @@ The main goal is to plan a safe and comfortable trajectory that will guide the S
 
   ![equation](https://latex.codecogs.com/png.latex?\tau^*=arg%20min%20_{\tau_h}%20f(\tau_h,%20o,%20m;%20w))
 
-  This equation identifies the optimal trajectory \( \tau^* \) by minimizing the cost function.
+  This equation identifies the optimal trajectory ![equation](https://latex.codecogs.com/png.latex?\tau^*) by minimizing the cost function.
 
 ### GRU-Based Refinement
 
@@ -121,9 +121,9 @@ The main goal is to plan a safe and comfortable trajectory that will guide the S
   ![equation](https://latex.codecogs.com/png.latex?L=L_{per}+\alpha%20L_{pre}+\beta%20L_{pla})
 
   Where:
-  - \( L_{per} \): Perception loss.
-  - \( \alpha L_{pre} \): Prediction loss, scaled by a learnable weight \( \alpha \).
-  - \( \beta L_{pla} \): Planning loss, scaled by a learnable weight \( \beta \).
+  - ![equation](https://latex.codecogs.com/png.latex?L_{per}): Perception loss.
+  - ![equation](https://latex.codecogs.com/png.latex?\alpha%20L_{pre}): Prediction loss, scaled by a learnable weight ![equation](https://latex.codecogs.com/png.latex?\alpha).
+  - ![equation](https://latex.codecogs.com/png.latex?\beta%20L_{pla}): Planning loss, scaled by a learnable weight ![equation](https://latex.codecogs.com/png.latex?\beta).
 
 ### Perception Loss (\( L_{per} \))
 

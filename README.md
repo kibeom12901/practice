@@ -18,8 +18,7 @@ The framework introduces an accumulative ego-centric alignment method, which inc
 - **Transformation**: Multi-view images are transformed into a common 3D frame using depth predictions.
 - **Feature Extraction**: Features from each camera image are lifted into 3D space based on depth estimations, using the equation:
 
-  <img width="115" alt="Screenshot 2024-08-27 at 4 45 55 PM" src="h![Uploading Screenshot 2024-08-27 at 4.46.34 PM.png…]()
-ttps://github.com/user-attachments/assets/383b5c80-b76f-4704-b931-6b6a58f178d9">      
+  <img width="143" alt="Screenshot 2024-08-27 at 4 48 26 PM" src="https://github.com/user-attachments/assets/8e8f7582-b79f-4739-9087-6b23d8e3ef05">
 
   Here, <img width="26" alt="Screenshot 2024-08-27 at 4 46 46 PM" src="https://github.com/user-attachments/assets/ecafd953-3fb4-400f-bdd7-0046e00b4686"> represents the 3D features, <img width="24" alt="Screenshot 2024-08-27 at 4 47 12 PM" src="https://github.com/user-attachments/assets/59193035-3c51-486d-894d-0a3c998c6629"> is the feature map, and <img width="22" alt="Screenshot 2024-08-27 at 4 47 32 PM" src="https://github.com/user-attachments/assets/e0a28c4c-8e12-4f7c-bb4a-9cd55f14b3a2"> is the depth map.
 

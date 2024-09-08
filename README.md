@@ -1,4 +1,4 @@
-# Progress Log
+#Progress Log
 
 ## 8/5/2024 Onwards - ST-P3 Workflow
 
